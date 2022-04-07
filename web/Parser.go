@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
-	"github.com/techlabs/swabhav/tsam/util"
+	"github.com/shaileshSwabhav/tsam/errors"
 )
 
 // Parser helps in parsing the data from the URL params.
@@ -28,7 +28,7 @@ func NewParser(r *http.Request) *Parser {
 // GetUUID will get uuid from the given paramName in URL params.
 func (p *Parser) GetUUID(paramName string) (uuid.UUID, error) {
 	idString := p.params[paramName]
-	id, err := util.ParseUUID(idString)
+	id, err := parseUUID(idString)
 	if err != nil {
 		return uuid.Nil, err
 	}
@@ -38,7 +38,7 @@ func (p *Parser) GetUUID(paramName string) (uuid.UUID, error) {
 // GetTenantID will get "tenantID" param in URL params.
 func (p *Parser) GetTenantID() (uuid.UUID, error) {
 	idString := p.params["tenantID"]
-	id, err := util.ParseUUID(idString)
+	id, err := parseUUID(idString)
 	if err != nil {
 		return uuid.Nil, err
 	}
@@ -64,4 +64,16 @@ func (p *Parser) ParseLimitAndOffset() (limit, offset int) {
 		}
 	}
 	return
+}
+
+// parseUUID Parse uuid From String
+func parseUUID(input string) (uuid.UUID, error) {
+	if len(input) == 0 {
+		return uuid.Nil, errors.NewValidationError("Empty ID")
+	}
+	id, err := uuid.FromString(input)
+	if err != nil {
+		return uuid.Nil, errors.NewValidationError(input + ": Invalid ID")
+	}
+	return id, nil
 }
