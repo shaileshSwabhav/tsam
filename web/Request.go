@@ -1,4 +1,4 @@
-package web
+package tsam
 
 import (
 	"encoding/json"
