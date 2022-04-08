@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/swabhav/tsam/errors"
+	"github.com/shaileshSwabhav/tsam/errors"
 )
 
 // RespondJSON Make response with json formate.

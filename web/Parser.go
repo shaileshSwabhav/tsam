@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
-	"github.com/swabhav/tsam/errors"
+	"github.com/shaileshSwabhav/tsam/errors"
 )
 
 // Parser helps in parsing the data from the URL params.

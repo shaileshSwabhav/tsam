@@ -1,4 +1,4 @@
-module github.com/swabhav/tsam
+module github.com/shaileshSwabhav/tsam
 
 go 1.16
 
