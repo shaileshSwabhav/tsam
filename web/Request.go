@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/shaileshSwabhav/tsam/errors"
+	"github.com/swabhav/tsam/errors"
 )
 
 // UnmarshalJSON parses data from request and return otherwise error return.
